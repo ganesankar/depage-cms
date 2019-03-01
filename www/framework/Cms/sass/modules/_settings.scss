@@ -5,6 +5,8 @@ $editWidth: 3 * $treeWidth !global;
 
 $touchScale: 1.2 !global;
 
+// light
+/*
 $baseColor: #ccc8c4 !global;
 $backgroundColor: lighten($baseColor, 5%) !global;
 $backgroundDarkColor: transparentize(darken($baseColor, 65%), 0.12) !global;
@@ -12,6 +14,7 @@ $backgroundLighterColor: lighten($backgroundColor, 10%) !global;
 $backgroundBrightColor: lighten($backgroundColor, 12%) !global;
 $backgroundDisabledColor: #cccccc !global;
 $backgroundMenu: $backgroundDarkColor !global;
+$backgroundBody: #ffffff !global;
 $borderColor: darken($baseColor, 5%) !global;
 $borderLightColor: lighten($borderColor, 12%) !global;
 $borderDarkColor: darken($borderColor, 25%) !global;
@@ -20,6 +23,32 @@ $linkColor: darken(#047CBF, 7%) !global;
 $linkHoverColor: #047CBF !global;
 $helpColor: #047CBF;
 $textBaseColor: #000000 !global;
+$textLighterColor: #555555 !global;
+$textDisabledColor: #999999 !global;
+$textBrightColor: #ffffff !global;
+$selectionBackgroundColor: #047CBF !global;
+$selectionTextColor: #ffffff !global;
+$insertMarkerBackground: lighten($selectionBackgroundColor, 10%) !global;
+$cornerRadius: 0.4em !global;
+*/
+
+// dark
+$baseColor: #ccc8c4 !global;
+$backgroundColor: lighten($baseColor, 5%) !global;
+$backgroundDarkColor: transparentize(darken($baseColor, 65%), 0.12) !global;
+$backgroundLighterColor: lighten($backgroundColor, 10%) !global;
+$backgroundBrightColor: lighten($backgroundColor, 12%) !global;
+$backgroundDisabledColor: #cccccc !global;
+$backgroundMenu: $backgroundDarkColor !global;
+$backgroundBody: #1D2426 !global;
+$borderColor: darken($baseColor, 5%) !global;
+$borderLightColor: lighten($borderColor, 12%) !global;
+$borderDarkColor: darken($borderColor, 25%) !global;
+$errorColor: #882200;
+$linkColor: darken(#047CBF, 7%) !global;
+$linkHoverColor: #047CBF !global;
+$helpColor: #047CBF;
+$textBaseColor: #CACACA !global;
 $textLighterColor: #555555 !global;
 $textDisabledColor: #999999 !global;
 $textBrightColor: #ffffff !global;
