@@ -3,7 +3,6 @@
     @include depage-shy-dialogue (
         $width: 20em,
         $padding: 10px 15px,
-        $background: $backgroundDarkColor,
         $corner-radius: $cornerRadius * 2,
         $direction-size: 15px
     );
@@ -19,7 +18,6 @@
     h1,
     p,
     a {
-        color: $textBrightColor;
         font-size: 1em;
         line-height: 1.5em;
     }
@@ -28,22 +26,8 @@
         @include radius(4px);
     }
     a.button {
-        &:focus,
-        &:hover {
-            background-color: lighten($backgroundDarkColor, 30%);
-        }
-        &:focus {
-            border-color: $selectionBackgroundColor;
-        }
         &.default {
             padding: 6px 12px;
-            background: $selectionBackgroundColor;
-            color: $textBrightColor;
-
-            &:focus,
-            &:hover {
-                background: lighten($selectionBackgroundColor, 5%);
-            }
         }
     }
 }
@@ -57,7 +41,6 @@ body > .dialog-full {
     bottom: 0;
     z-index: 5002;
     opacity: 0;
-    background: rgba(0, 0, 0, 0.3);
     @include transition(500ms, "opacity");
 
     > .content {
@@ -66,11 +49,8 @@ body > .dialog-full {
         bottom: $toolbarHeight;
         left: 60px;
         right: 60px;
-        background: $backgroundColor;
         padding: 11px;
-        border: 1px solid $borderColor;
         overflow: hidden;
-        @include box-shadow($darkShadow);
         @include transition(500ms, "transform");
         @include transform(translateY(-100%));
         @include radius(10px, "bottom", "left");
@@ -97,7 +77,6 @@ body > .dialog-full {
         bottom: 0;
         z-index: 100;
         height: $toolbarHeight * 1.5;
-        border-top: 1px solid $borderColor;
         padding: 0 15px;
         text-align: center;
 
@@ -111,19 +90,12 @@ body > .dialog-full {
             line-height: $toolbarHeight;
             padding: 0 10px;
             margin: 7px 7px;
-            background: $backgroundLighterColor;
 
-            &:hover {
-                background: $backgroundBrightColor;
-            }
             &.default {
                 font-weight: bold;
-                background: $selectionBackgroundColor;
-                color: $selectionTextColor;
             }
             &.default.disabled {
                 opacity: 0.5;
-                background: $backgroundDisabledColor;
                 cursor: auto;
             }
         }
@@ -160,83 +132,6 @@ body > .dialog-full {
     > .info,
     > form.depage-form {
         padding-left: 16px;
-    }
-}
-// }}}
-// {{{ upload
-html[lang='en'] {
-    #upload .dropArea.has-drop-support .content:before {
-        content: "Drop files here";
-    }
-}
-html[lang='de'] {
-    #upload .dropArea.has-drop-support .content:before {
-        content: "Dateien hierhin ziehen";
-    }
-}
-#upload {
-    background: rgba(255, 255, 255, 0.5);
-
-    .box {
-        //@include radius(7px);
-        @include box-shadow(0px 5px 15px 5px rgba(0, 0, 0, 0.3));
-        width: 520px;
-        border: 1px solid $borderColor;
-        padding: 10px;
-        background: $backgroundColor;
-        margin: auto;
-    }
-
-    p.submit {
-        display: none;
-    }
-    p.input-file {
-        width: 100%;
-
-        input {
-            width: 100%;
-            border: none;
-            background: none;
-            padding-left: 0;
-        }
-    }
-    .dropArea.has-drop-support {
-        $size: 48px * 2.5;
-        height: 250px;
-
-        .content:before {
-            display: block;
-            position: relative;
-            margin: auto;
-            width: $size * 2;
-            text-align: center;
-            font-size: 16px;
-        }
-        .content:after {
-            @include icon-base("upload", $size);
-            display: block;
-            content: " ";
-            position: relative;
-            border: 1px solid $borderColor;
-            @include radius(14px);
-            margin: auto;
-            width: $size;
-            height: $size;
-        }
-        &.drag-over .content:after {
-            @include icon("upload-drag-over", $size);
-            border-color: #4E4C4B;
-        }
-    }
-    .progressArea {
-        width: 400px;
-
-        .textinfo {
-            display: block;
-        }
-        progress {
-            display: block;
-        }
     }
 }
 // }}}

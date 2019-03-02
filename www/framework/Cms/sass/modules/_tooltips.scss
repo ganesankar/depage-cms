@@ -3,7 +3,6 @@
     @include depage-shy-dialogue (
         $width: 20em,
         $padding: 8px 15px,
-        $background: $backgroundDarkColor,
         $corner-radius: $cornerRadius,
         $direction-size: 15px
     );
@@ -20,7 +19,6 @@
     h1,
     p,
     a {
-        color: $textBrightColor;
         font-size: 1em;
         line-height: 1.5em;
     }

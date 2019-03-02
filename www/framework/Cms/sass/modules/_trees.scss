@@ -27,7 +27,6 @@
     }
 }
 .jstree-anchor {
-    color: black;
     white-space: nowrap;
     padding: 0;
     margin: 0;
@@ -51,7 +50,6 @@
     }
     > span.hint {
         margin-left: 10px;
-        color: #999999;
 
         > span.mini-thumb {
             position: absolute;
@@ -60,7 +58,6 @@
             width: $iconSize;
             height: $iconSize;
             display: block;
-            background-color: #ffffff;
             background-size: 100% 100%;
         }
     }
@@ -144,7 +141,6 @@
         left: 0;
         right: 0;
         height: 2px;
-        background: $insertMarkerBackground;
         z-index: 99;
     }
     > .jstree-node-actions {
@@ -165,18 +161,8 @@
             height: $actionIconHeight;
             line-height: $actionIconHeight - 3px;
             @include radius($actionIconHeight * 0.5);
-            color: $selectionTextColor;
             text-align: center;
             @include icon-base("add-white", $actionIconHeight);
-            background-color: $insertMarkerBackground;
-        }
-    }
-    &.insert-into,
-    &.insert-before,
-    &.insert-after {
-        & > .jstree-anchor {
-            background: transparent;
-            color: #000000 !important;
         }
     }
     &.insert-into  {
@@ -256,15 +242,10 @@
         left: $treeLineHeight - 1px;
         width: $actionIconHeight;
         height: $actionIconHeight;
-        color: $selectionTextColor;
-        background-color: $backgroundColor;
         text-align: center;
         @include icon-base("add-white", $actionIconHeight);
         @include transition(300ms, "background-color");
         @include radius(50%);
-    }
-    &:hover::before {
-        background-color: $insertMarkerBackground;
     }
 }
 // }}}
@@ -304,36 +285,16 @@
 .jstree-animated {
     transition: background-color 0.15s, box-shadow 0.15s;
 }
-.jstree-hovered {
-    background: $backgroundColor;
-}
-.jstree-context {
-    background: $backgroundColor;
-}
 .jstree-clicked,
 .jstree-clicked.jstree-hovered {
     background: $backgroundColor;
     color: $textBaseColor !important;
 }
-.jstree-focus {
-    .jstree-clicked,
-    .jstree-clicked.jstree-hovered {
-        background: $selectionBackgroundColor;
-        color: $selectionTextColor !important;
-    }
-}
 .jstree-no-icons .jstree-anchor > .jstree-themeicon {
     display: none;
 }
 .jstree-disabled {
-    background: $backgroundDisabledColor;
     opacity: 0.5;
-}
-.jstree-disabled.jstree-hovered {
-    background: $backgroundDisabledColor;
-}
-.jstree-disabled.jstree-clicked {
-    background: $backgroundDisabledColor;
 }
 .jstree-disabled > .jstree-icon {
     opacity: 0.8;
@@ -348,7 +309,6 @@
 // {{{ jstree elements
 .jstree-search {
     font-style: italic;
-    color: #8b0000;
     font-weight: bold;
 }
 .jstree-no-checkboxes .jstree-checkbox {
@@ -392,8 +352,6 @@
     height: 100% !important;
     padding: 0 !important;
     padding-left: 6px !important;
-    background: #ffffff;
-    border: 1px solid $selectionBackgroundColor !important;
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
@@ -457,7 +415,7 @@
 }
 .jstree-themeicon-custom {
     background-color: transparent;
-    background-image: none;
+    background-image: none !important;
     background-position: 0 0;
 }
 .jstree-container-ul > .jstree-node {
@@ -548,7 +506,7 @@
     }
 }
 .icon-sec_separator > .jstree-icon {
-    background-image: none;
+    background-image: none !important;
 }
 // }}}
 
@@ -598,14 +556,11 @@
 // {{{ trees layout
 .trees {
     position: absolute;
-    background: #ffffff;
     width: $treeWidth;
     overflow: hidden;
-    border-right: 1px solid $borderColor;
 
     .tree {
         position: absolute;
-        background: $backgroundLighterColor;
 
         .jstree-container {
             position: absolute;
@@ -613,16 +568,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: $backgroundBrightColor;
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
             @include transition(300ms, "background-color");
-
-            &.jstree-focus {
-                background: $textBrightColor;
-                border-top-color: $selectionBackgroundColor;
-                border-bottom-color: $selectionBackgroundColor;
-            }
         }
     }
     .tree.pages {
@@ -630,7 +576,6 @@
         left: 0;
         right: 0;
         bottom: 50%;
-        border-bottom: 1px solid $borderColor;
     }
     .tree.pagedata {
         top: 50%;

@@ -4,13 +4,11 @@
     top: 0;
     left: 0;
     margin: 0;
-    border-bottom: 1px solid $borderColor;
     width: 100%;
     z-index: 6000;
 
     menu.left a.home {
         // @todo icon
-        color: #000000;
         font-weight: bold;
     }
 }
@@ -310,7 +308,6 @@
     menu li.open > a {
         &,
         &:hover {
-            color: $textBrightColor;
             @include radius(0, "bottom", "left");
             @include radius(0, "bottom", "right");
             border-color: transparent !important;
@@ -352,9 +349,7 @@
     }
     a.disabled,
     a.disabled:hover {
-      background-color: #fff;
-      color: #aaa;
-      cursor: default;
+        cursor: default;
     }
     select {
         -webkit-appearance: none;
@@ -366,15 +361,9 @@
         padding: 2px;
         padding-right: 5px;
         margin-right: 3em;
-        background-color: #ffffff;
-        border: none;
 
         option {
             padding: 2px;
-        }
-
-        &:hover {
-            background-color: $backgroundMenu;
         }
     }
     .pills {
@@ -395,12 +384,6 @@
                 @include radius(3px, "bottom", "right");
                 border-right: none;
             }
-            &:hover {
-                background-color: $backgroundLighterColor;
-            }
-        }
-        a.toggle-button.active {
-            color: #4E4C4B;
         }
     }
     .layout-buttons a {

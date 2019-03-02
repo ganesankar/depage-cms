@@ -242,8 +242,6 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 .sp-top {
     margin-bottom: 3px;
 }
-.sp-color, .sp-hue, .sp-clear {
-}
 
 /* Input */
 .sp-input-container {
@@ -255,17 +253,11 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .sp-input {
     font-size: 12px !important;
-    border: 1px solid $borderLightColor;
     padding: 4px 5px;
     margin: 0 5px 5px 0;
     width: calc((100% - 15%) - 5px);
     background:transparent;
     @include radius($cornerRadius);
-    color: #222;
-}
-.sp-input:focus  {
-    background: #ffffff;
-    border: 1px solid $borderColor;
 }
 .sp-input.sp-validation-error {
     border: 1px solid red;
@@ -347,20 +339,13 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
     *zoom: 1;
     *display: inline;
     border: none;
-    background: #ffffff;
-    color: #333;
     vertical-align: middle;
     width: 100%;
     @include radius($cornerRadius);
 }
-.sp-replacer:hover, .sp-replacer.sp-active {
-    color: #111;
-}
 .sp-replacer.sp-disabled {
     cursor:default;
     opacity: 0.5;
-    //border-color: silver;
-    //color: silver;
 }
 .sp-dd {
     padding: 2px 0;
@@ -408,11 +393,6 @@ body > .sp-container {
     @include box-shadow($shadow);
     @include radius($cornerRadius * 0.5);
 
-    .sp-input {
-        background: #ffffff;
-        color: $textBaseColor;
-        border: none;
-    }
     .sp-picker-container {
         padding-bottom: 0;
     }
@@ -421,16 +401,7 @@ body > .sp-container {
 
 /* Buttons: http://hellohappy.org/css3-buttons/ */
 .sp-container button {
-  background-color: #eeeeee;
-  background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
-  background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
-  background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
-  background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
-  background-image: linear-gradient(to bottom, #eeeeee, #cccccc);
-  border: 1px solid #ccc;
-  border-bottom: 1px solid #bbb;
   border-radius: 3px;
-  color: #333;
   font-size: 14px;
   line-height: 1;
   padding: 5px 4px;
@@ -439,29 +410,10 @@ body > .sp-container {
   vertical-align: middle;
 }
 .sp-container button:hover {
-    background-color: #dddddd;
-    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: linear-gradient(to bottom, #dddddd, #bbbbbb);
-    border: 1px solid #bbb;
-    border-bottom: 1px solid #999;
     cursor: pointer;
-    text-shadow: 0 1px 0 #ddd;
-}
-.sp-container button:active {
-    border: 1px solid #aaa;
-    border-bottom: 1px solid #888;
-    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
 }
 .sp-cancel {
     font-size: 11px;
-    color: #d93f3f !important;
     margin:0;
     padding:2px;
     margin-right: 5px;
@@ -470,7 +422,6 @@ body > .sp-container {
 
 }
 .sp-cancel:hover {
-    color: #d93f3f !important;
     text-decoration: underline;
 }
 
@@ -505,19 +456,6 @@ body > .sp-container {
     }
 }
 
-.sp-palette .sp-thumb-light.sp-thumb-active .sp-thumb-inner {
-    &:after {
-        content: " ";
-        background-color: #000000;
-    }
-}
-
-.sp-palette .sp-thumb-dark.sp-thumb-active .sp-thumb-inner {
-    &:after {
-        content: " ";
-        background-color: #ffffff;
-    }
-}
 
 .sp-clear-display {
     background-repeat:no-repeat;
