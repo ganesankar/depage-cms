@@ -22,10 +22,6 @@
     .selectize-input {
         padding: 8px 12px;
         font-size: $fSizeM + 1px;
-
-        &::placeholder {
-            color: $textDisabledColor;
-        }
     }
 
     &.saving::before {
@@ -51,7 +47,6 @@
     }
     p.input-richtext .textarea-content {
         a {
-            color: $selectionBackgroundColor;
             text-decoration: underline;
         }
         li {
@@ -85,7 +80,6 @@
             td {
                 position: relative;
                 vertical-align: top;
-                border: 1px solid $borderColor;
                 padding: 3px 6px;
                 white-space: normal;
                 word-break: break-word;
@@ -179,8 +173,6 @@
     p.submit {
         input {
             font-weight: bold;
-            color: $textBrightColor;
-            background: $selectionBackgroundColor;
         }
     }
     p.cancel {
@@ -191,10 +183,6 @@
             background: none;
             border: none;
             text-decoration: underline;
-
-            &:hover {
-                color: #000000;
-            }
         }
     }
     fieldset {
@@ -206,13 +194,7 @@
         border-bottom: 1px solid transparent;
         margin-bottom: -1px;
 
-        & + fieldset {
-            border-top: 1px solid $borderLightColor;
-
-        }
         &.focus {
-            border-top: 1px solid $selectionBackgroundColor;
-            border-bottom: 1px solid $selectionBackgroundColor;
             z-index: 20;
         }
 
@@ -262,7 +244,6 @@
 
             h1 {
                 padding-left: 2em;
-                color: $textBaseColor;
                 text-decoration: none;
                 border-top: 1px solid transparent;
 
@@ -292,18 +273,9 @@
             form {
                 @include box-shadow($lightShadow);
             }
-            h1,
-            form,
-            form::before {
-                border-top: 1px solid $selectionBackgroundColor;
-                border-bottom: 1px solid $selectionBackgroundColor;
-            }
             h1 {
-                border-left: 5px solid $selectionBackgroundColor;
-                background-color: $backgroundLighterColor;
                 font-weight: bold;
                 width: 33%;
-                color: $textBaseColor;
                 text-decoration: none;
 
                 &:hover {
@@ -322,7 +294,6 @@
                     left: -10px;
                     width: 10px;
                     height: $height;
-                    background-color: $backgroundLighterColor;
                 }
             }
         }
@@ -331,7 +302,6 @@
             z-index: 5000;
 
             h1 {
-                background-color: $backgroundLighterColor;
                 font-weight: bold;
                 width: 133%;
                 @include box-shadow($lightShadow);
@@ -352,7 +322,6 @@
     h1,
     form {
         padding: 5px 10px;
-        background-color: $backgroundLighterColor;
     }
     h1 {
         position: absolute;
@@ -372,11 +341,7 @@
         font-weight: normal;
         padding-top: 0;
         margin: -($menuLineHeight * 0.125) 0;
-        color: $linkColor;
         text-decoration: none;
-        border-top: 1px solid $borderLightColor;
-        border-bottom: 1px solid transparent;
-        border-left: 5px solid transparent;
     }
     .placeholder {
         height: $height;
@@ -396,13 +361,6 @@
     }
 }
 /* }}} */
-// {{{ .edit-href
-.edit-href {
-    input.dnd-hover {
-        outline: 1px solid $selectionBackgroundColor;
-    }
-}
-// }}}
 // {{{ .edit-href .edit-src
 .edit-href,
 .edit-src {
@@ -416,17 +374,11 @@
         top: 5px;
         right: 5px;
         width: 35px;
-        background: $baseColor;
         padding: 3px 0px 11px 0px;
         text-align: center;
         line-height: 5px;
         font-weight: bold;
-        color: $textBaseColor !important;
         @include radius(3px);
-
-        &:hover {
-            background: $backgroundColor;
-        }
     }
 }
 // }}}
@@ -441,16 +393,6 @@
 .edit-source {
     textarea {
         font-family: "Courier";
-    }
-}
-// }}}
-// {{{ .selectize-input
-.depage-form {
-    .selectize-input.dropdown-active,
-    .selectize-input.dropdown-active::before,
-    .selectize-dropdown {
-        color: $textBrightColor !important;
-        background-color: $backgroundMenu !important;
     }
 }
 // }}}
@@ -469,10 +411,8 @@
     margin: 0;
     padding: 0;
     z-index: 1000;
-    color: #ffffff;
     font-size: 1em;
     padding: 0 $radius;
-    background-color: $backgroundMenu;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     @include radius($radius);
@@ -484,8 +424,6 @@
         left: 50%;
         margin-left: -5px;
         top: $buttonSize;
-        border: 5px solid transparent;
-        border-top-color: $backgroundMenu;
     }
 
     li {

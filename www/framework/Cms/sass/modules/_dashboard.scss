@@ -14,18 +14,9 @@
 
         form {
             padding: 15px;
-            background: $backgroundLighterColor;
-            border-top: 1px solid $selectionBackgroundColor;
-            border-bottom: 1px solid $selectionBackgroundColor;
-            @include box-shadow($lightShadow);
 
             h2 {
                 margin-bottom: 15px;
-            }
-            p.submit input {
-                color: $textBrightColor;
-                background: $selectionBackgroundColor;
-
             }
         }
     }
@@ -126,7 +117,6 @@
     h2 {
         margin-top: 12px;
         margin-bottom: 0;
-        color: $textLighterColor;
         letter-spacing: 0.15em;
         font-weight: normal;
         font-size: $fSizeS;
@@ -161,7 +151,6 @@
         clear: both;
         padding: 12px;
         margin-bottom: 12px;
-        background: #ffffff;
     }
     img.thumb { position: absolute;
         top: 0;
@@ -187,14 +176,6 @@
         @media (pointer:coarse) {
             line-height: 20px * $touchScale;
             height: 26px * $touchScale;
-        }
-    }
-    a.button {
-        color: $textLighterColor;
-
-        &:hover {
-            background: $selectionBackgroundColor;
-            color: $selectionTextColor;
         }
     }
     .buttons {
@@ -314,7 +295,6 @@
     }
 }
 .projectlist dd {
-    background: $backgroundBrightColor;
     max-height: 65vh;
     @extend %scrollY;
     @include radius($cornerRadius);
@@ -339,13 +319,9 @@ table.recent-changes {
         overflow: hidden;
         text-overflow: ellipsis;
 
-        a {
-            color: #000000;
-
-            &:hover {
-                text-decoration: underline;
-                background: transparent;
-            }
+        a:hover {
+            text-decoration: underline;
+            background: transparent;
         }
     }
     td.date {
@@ -356,15 +332,6 @@ table.recent-changes {
     }
     td.actions {
         width: 70%;
-    }
-    td.lastchange,
-    td.date,
-    td.released,
-    td.published {
-        &,
-        a {
-            color: #aaaaaa;
-        }
     }
 }
 // }}}
@@ -378,7 +345,6 @@ ul.users p {
 .tasks {
     dt {
         font-weight: normal;
-        color: #882200;
         margin-top: 24px;
 
         &:first-child {
@@ -388,11 +354,9 @@ ul.users p {
     dd {
         margin-left: 0;
         position: relative;
-        color: #666666;
 
         strong {
             font-weight: normal;
-            color: #000000;
         }
         p {
             width: 80%;
@@ -401,10 +365,6 @@ ul.users p {
         &.failed {
             p {
                 margin-left: 2em;
-            }
-            p,
-            strong {
-                color: #882200;
             }
             strong {
                 font-weight: bold;

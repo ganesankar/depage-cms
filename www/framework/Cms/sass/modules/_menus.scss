@@ -10,7 +10,6 @@
     margin: 0;
     padding: 0;
     min-width: 200px;
-    background-color: $backgroundMenu;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 
@@ -28,7 +27,6 @@
         margin: 0;
         padding: 0;
         line-height: $menuLineHeight;
-        color: $textBrightColor;
 
         > a {
             clear: left;
@@ -42,13 +40,9 @@
             height: $menuLineHeight;
             padding-top: 0;
             padding-bottom: 0;
-            color: $textBrightColor;
             border: none;
             @include radius(0);
 
-            &:hover {
-                background: $selectionBackgroundColor;
-            }
             &:focus {
                 outline: 0;
             }
@@ -90,19 +84,11 @@
         }
     }
     .vakata-context-separator {
-        border-top: 1px solid $borderDarkColor;
         height: 1px;
         min-height: 1px;
         max-height: 1px;
         > a {
             display: none;
-        }
-    }
-    .vakata-contextmenu-disabled > a {
-        &,
-        &:hover {
-            color: $textLighterColor !important;
-            background-color: transparent !important;
         }
     }
     li > a > i {
@@ -126,7 +112,6 @@
     }
     .vakata-contextmenu-shortcut {
         font-size: 0.8em;
-        color: silver;
         opacity: 0.5;
         display: none;
     }

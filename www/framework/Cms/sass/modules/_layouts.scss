@@ -14,7 +14,6 @@
         height: auto !important;
         height: 48px;
         min-height: 48px;
-        border-bottom: 1px solid $borderLightColor;
     }
     .bottom {
         position: absolute;
@@ -29,7 +28,6 @@
     a.new {
         position: relative;
         padding-left: 24px;
-        color: #000000;
 
         &:before {
             display: block;
@@ -307,7 +305,6 @@ html {
         .layout-right {
             left: $editWidth;
             right: 0;
-            border-left: 1px solid $borderColor;
         }
         .toolbar menu.preview {
             left: $editWidth;

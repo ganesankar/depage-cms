@@ -3,8 +3,6 @@ header.info {
     position: absolute;
     left: 0;
     height: $infoHeight;
-    border-bottom: 1px solid $borderColor;
-    background: $backgroundColor;
     z-index: 5001;
 
     h1 {
@@ -14,7 +12,6 @@ header.info {
         font-weight: normal;
         font-size: $fSizeXS;
         line-height: $infoHeight - 2px;
-        color: #000000;
     }
     &.info-tree-pages,
     &.info-tree-pagedata {
@@ -29,7 +26,6 @@ header.info {
     }
     &.info-doc-properties {
         left: $treeWidth - 1;
-        border-left: 1px solid $borderColor;
     }
 }
 .preview header.info {

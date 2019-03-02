@@ -1,7 +1,7 @@
 // {{{ progress
 progress {
     display: block;
-    @include progress($borderLightColor, $linkColor) {
+    @include progress() {
         @include radius(2em);
         width: 100%;
         margin: 6px 0;
@@ -20,7 +20,6 @@ progress {
     }
     strong {
         font-weight: normal;
-        color: $linkColor;
     }
     div {
         position: relative;
@@ -39,25 +38,7 @@ progress {
 
         &:hover {
             border: none;
-            background-color: $backgroundLighterColor;
             opacity: 1;
-        }
-    }
-    .error {
-        strong,
-        em {
-            color: $errorColor !important;
-        }
-        progress {
-            &::-webkit-progress-value {
-                background: $errorColor !important;
-            }
-            &::-moz-progress-bar {
-                background: $errorColor !important;
-            }
-            &::progress-value {
-                background: $errorColor !important;
-            }
         }
     }
 }
@@ -91,7 +72,7 @@ progress {
         }
 
         progress {
-            @include progress(transparent, $selectionBackgroundColor) {
+            @include progress() {
                 @include radius(0);
                 width: 100%;
                 height: 3px;
@@ -102,12 +83,10 @@ progress {
     }
     > .task-list {
         display: none;
-        color: $textBrightColor;
         position: absolute;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: $backgroundDarkColor;
         padding-bottom: 15px;
         @include radius($cornerRadius, "top", "left");
         @include radius($cornerRadius, "top", "right");
@@ -119,15 +98,11 @@ progress {
     }
 
     &:hover {
-
         > .task-overview {
             progress {
-                @include progress($borderColor, $textBrightColor) {
+                @include progress() {
                     @include radius($cornerRadius);
-                    width: 100%;
                     height: 4px;
-                    margin: 0;
-                    border: none;
                 };
             }
         }
@@ -149,7 +124,6 @@ progress {
         em {
             font-style: normal;
             font-size: $fSizeS;
-            color: $textDisabledColor;
 
             &:after {
                 content: " / ";

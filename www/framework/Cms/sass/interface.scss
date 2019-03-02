@@ -9,7 +9,6 @@
 
 @import "modules/_animations";
 @import "modules/_icons";
-@import "modules/_colors";
 
 /* {{{ global */
 * {
@@ -121,5 +120,7 @@ select,
 @import "modules/_liveFilter.scss";
 @import "modules/_liveHelp.scss";
 @import "modules/_growl.scss";
+
+@import "modules/_colors";
 
 // vim:set ft=scss sw=4 sts=4 fdm=marker :

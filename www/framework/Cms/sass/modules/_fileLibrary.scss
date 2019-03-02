@@ -4,8 +4,6 @@ figure.thumb {
     $width: $thumbSize;
     $height: $thumbSize;
 
-    border: 1px solid $backgroundBrightColor;
-    background: #ffffff;
     position: relative;
     width: $width + 8px;
     padding: 3px;
@@ -19,7 +17,6 @@ figure.thumb {
     figcaption {
         font-size: $fSizeS;
         max-width: 100%;
-        color: $textLighterColor;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -36,8 +33,6 @@ figure.thumb {
     .fileinfo {
         position: absolute;
         display: none;
-        background: $backgroundMenu;
-        color: $textBrightColor;
         border: 1px solid none;
         padding: 5px 15px;
         left: 100%;
@@ -132,16 +127,10 @@ figure.thumb {
 // {{{ .file-list
 .file-list {
     padding: 15px;
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    background: $backgroundBrightColor;
     @include transition(300ms, "background-color");
 
     h1 {
         padding: 0;
-    }
-    progress {
-        background-color: transparent;
     }
     .message {
         text-align: center;
@@ -160,40 +149,6 @@ figure.thumb {
             cursor: pointer;
             margin-right: 6px;
             margin-bottom: 0;
-            background: transparent;
-
-            &:hover {
-                background: $backgroundBrightColor;
-            }
-            &.selected {
-                border-color: $backgroundDisabledColor;
-                background: $backgroundDisabledColor;
-                @include box-shadow($lightShadow);
-
-                figcaption {
-                    color: $selectionBackgroundColor;
-                }
-            }
-        }
-    }
-
-    &.focus {
-        border-top: 1px solid $selectionBackgroundColor;
-        border-bottom: 1px solid $selectionBackgroundColor;
-        background: #ffffff;
-
-        figure.thumb.selected {
-            border-color: $selectionBackgroundColor;
-            background: $selectionBackgroundColor;
-
-            &.selected.invalid-selection {
-                border-color: $backgroundDisabledColor;
-                background: $backgroundDisabledColor;
-            }
-
-            figcaption {
-                color: $selectionTextColor;
-            }
         }
     }
 }
