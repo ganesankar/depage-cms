@@ -1,16 +1,10 @@
 $progressAddFallback: false !default;
 
 // {{{ progress
-@mixin progress($colorBack, $colorBar) {
+@mixin progress-colors($colorBack: null, $colorBar: null) {
     & {
         @include prefixer (appearance, none, webkit moz spec);
-
-        overflow: hidden;
-        height: 1em;
-        width: 6em;
         background: $colorBack;
-        position: relative;
-        @content;
 
         &::-webkit-progress-bar {
             background: $colorBack !important;
@@ -27,6 +21,21 @@ $progressAddFallback: false !default;
         &::progress-value {
             background: $colorBar !important;
         }
+        &:before {
+            background: $colorBar;
+        }
+    }
+}
+@mixin progress($colorBack: null, $colorBar: null) {
+    & {
+        @include prefixer (appearance, none, webkit moz spec);
+        @include progress-colors($colorBack, $colorBar);
+
+        overflow: hidden;
+        height: 1em;
+        width: 6em;
+        position: relative;
+        @content;
 
         // test fallback for internet explorer 9 ?
         &:before {
@@ -36,7 +45,6 @@ $progressAddFallback: false !default;
             height: 100%;
             content: " ";
             display: block;
-            background: $colorBar;
         }
         @if ($progressAddFallback) {
             @for $i from 0 through 100 {
