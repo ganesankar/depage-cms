@@ -470,7 +470,7 @@ table.recent-changes {
             color: $textBaseColor;
         }
         input[type="radio"]:checked + span {
-            background: darken($backgroundColor, 35%);
+            background: $backgroundEditType;
             color: $textBrightColor;
             @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
         }
@@ -496,7 +496,7 @@ table.recent-changes {
             }
         }
         input[type="checkbox"]:checked + span {
-            background: darken($backgroundColor, 35%);
+            background: $backgroundEditType;
             color: $textBrightColor;
             @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
         }
