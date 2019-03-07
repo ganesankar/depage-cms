@@ -225,6 +225,7 @@ form.lastchanged_pages {
             form::before {
                 border-top: 1px solid $selectionBackgroundColor;
                 border-bottom: 1px solid $selectionBackgroundColor;
+                background-color: $backgroundLighterColor;
             }
             h1 {
                 border-left: 5px solid $selectionBackgroundColor;
@@ -243,7 +244,7 @@ form.lastchanged_pages {
     }
     h1,
     form {
-        background-color: $backgroundLighterColor;
+        background-color: $backgroundBody;
     }
     h1 {
         color: $linkColor;
@@ -681,7 +682,7 @@ body > .dialog-full {
             border-bottom: 1px solid transparent;
 
             &.jstree-focus {
-                background: $backgroundBody;
+                background: $inputBackground;
                 border-top-color: $selectionBackgroundColor;
                 border-bottom-color: $selectionBackgroundColor;
             }
@@ -696,20 +697,20 @@ body > .dialog-full {
     $borderWidth: 15px * 0.5;
 
     .wrapper {
-        background: $backgroundDarkColor;
+        background: $backgroundMenu;
     }
     .direction-marker {
         &.left {
-            border-right: $borderWidth solid $backgroundDarkColor;
+            border-right: $borderWidth solid $backgroundMenu;
         }
         &.right {
-            border-left: $borderWidth solid $backgroundDarkColor;
+            border-left: $borderWidth solid $backgroundMenu;
         }
         &.top {
-            border-bottom: $borderWidth solid $backgroundDarkColor;
+            border-bottom: $borderWidth solid $backgroundMenu;
         }
         &.bottom {
-            border-top: $borderWidth solid $backgroundDarkColor;
+            border-top: $borderWidth solid $backgroundMenu;
         }
     }
     h1,
@@ -720,7 +721,7 @@ body > .dialog-full {
     a.button {
         &:focus,
         &:hover {
-            background-color: lighten($backgroundDarkColor, 30%);
+            background-color: lighten($backgroundMenu, 30%);
         }
         &:focus {
             border-color: $selectionBackgroundColor;
