@@ -260,6 +260,7 @@ $depageFormRadiobuttonHeight: $depageFormRadiobuttonSize !default;
         &:focus {
             border-color: $depageFormBorderColorFocus;
             background-color: $depageFormInputBackgroundFocus;
+            color: $depageFormTextColorFocus;
         }
     }
     .readonly {
