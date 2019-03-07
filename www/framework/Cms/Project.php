@@ -51,6 +51,11 @@ class Project extends \Depage\Entity\Entity
      * @brief previewType
      **/
     protected $previewType = "pre";
+
+    /**
+     * @brief graphicsOptions
+     **/
+    protected $graphicsOptions = [];
     // }}}
 
     /* {{{ constructor */
@@ -378,6 +383,18 @@ class Project extends \Depage\Entity\Entity
     public function setPreviewType($type)
     {
         $this->previewType = $type;
+    }
+    // }}}
+    // {{{ setGraphicsOptions()
+    /**
+     * @brief setGraphicsOptions
+     *
+     * @param mixed $options
+     * @return void
+     **/
+    public function setGraphicsOptions($options)
+    {
+        $this->graphicsOptions = $options;
     }
     // }}}
     // {{{ getXmlDb()
@@ -1140,8 +1157,8 @@ class Project extends \Depage\Entity\Entity
 
         // get transformer
         //$transformCache = new \Depage\Transformer\TransformCache($this->pdo, $this->name, $conf->template_set . "-live-" . $publishId);
-        //$transformer = \Depage\Transformer\Transformer::factory("live", $xmlgetter, $this->name, $conf->template_set, $transformCache);
-        $transformer = \Depage\Transformer\Transformer::factory("live", $xmlgetter, $this->name, $conf->template_set, null);
+        $transformCache = null;
+        $transformer = \Depage\Transformer\Transformer::factory("live", $xmlgetter, $this->name, $conf->template_set, $transformCache);
         $baseUrl = $this->getBaseUrl($publishId);
         $transformer->setBaseUrl($baseUrl);
         $transformer->routeHtmlThroughPhp = $conf->mod_rewrite == "true";
@@ -1150,6 +1167,7 @@ class Project extends \Depage\Entity\Entity
 
         $task = \Depage\Tasks\Task::loadOrCreate($this->pdo, $taskName, $this->name);
         $initId = $task->addSubtask("init", "
+            clearstatcache();
             \$fs = \\Depage\\Fs\\Fs::factory(%s, array(
                 'user' => %s,
                 'pass' => %s,
@@ -1159,6 +1177,7 @@ class Project extends \Depage\Entity\Entity
             \$urls = new \\Depage\\Publisher\\Urls(%s, %s);
             \$transformer = %s;
             \$transformCache = %s;
+            \$indexer = new \\Depage\\Search\\Indexer();
         ", [
             $conf->output_folder,
             $conf->output_user,
@@ -1202,19 +1221,45 @@ class Project extends \Depage\Entity\Entity
             ], $initId);
         }
 
+        $graphicsOptions = [
+            'extension' => $this->graphicsOptions->extension,
+            'executable' => $this->graphicsOptions->executable,
+            'optimize' => $this->graphicsOptions->optimize,
+            'baseUrl' => $baseUrl,
+            'cachePath' => $projectPath . "lib/cache/graphics/",
+            'relativePath' => $projectPath,
+        ];
+
+        $i = 0;
         foreach ($urls as $pageId => $url) {
             foreach ($languages as $lang => $name) {
                 $target = $lang . $url;
 
                 $pubId = $task->addSubtask(
-                    "publishing $target",
-                    "\$publisher->publishString(
-                        \$transformer->transformUrl(%s, %s),
-                        %s,
-                        \$updated
-                    );",
-                    [$url, $lang, $target],
+                    "transforming $target",
+                    "\$html = \$transformer->transformUrl(%s, %s);",
+                    [$url, $lang],
                     $initId
+                );
+                $task->addSubtask(
+                    "generating images for $target",
+                    "\$images = \$indexer->loadXml(\$html, %s)->getImages();
+                    \$imgUrl = new \\Depage\\Graphics\\Imgurl(%s);
+                    foreach (\$images as \$i) {
+                        \$imgUrl->render(\$i);
+                        if (\$imgUrl->rendered) {
+                            \$publisher->publishFile(%s . 'lib/cache/graphics/' . \$imgUrl->id, 'lib/cache/graphics/' . \$imgUrl->id);
+                        }
+                    }
+                    ",
+                    [$baseUrl . $target, $graphicsOptions, $projectPath],
+                    $pubId
+                );
+                $task->addSubtask(
+                    "publishing $target",
+                    "\$publisher->publishString(\$html, %s, \$updated);",
+                    [$target],
+                    $pubId
                 );
                 if ($apiAvailable) {
                     $task->addSubtask(
@@ -1231,10 +1276,11 @@ class Project extends \Depage\Entity\Entity
             }
             $task->addSubtask(
                 "adding canonical url for $target",
-                "\$urls->addUrl(%s, %s);",
-                [$pageId, $url],
+                "\$urls->addUrl(%s, %s, %s);",
+                [$pageId, $url, $i],
                 $pubId
             );
+            $i++;
         }
 
         // @todo add files that should be generated automatically (e.g. through graphics)
@@ -1366,6 +1412,9 @@ class Project extends \Depage\Entity\Entity
         $xmldb = $this->getXmlDb();
 
         $doc = $xmldb->getDocByNodeId($id);
+        if (!$doc) {
+            return;
+        }
         $node = $doc->getSubdocByNodeId($id);
 
         if (!$newNode = $xsltProc->transformToDoc($node)) {
@@ -1739,6 +1788,7 @@ class Project extends \Depage\Entity\Entity
             'pdo',
             'cache',
             'previewType',
+            'graphicsOptions',
         ]);
     }
     // }}}

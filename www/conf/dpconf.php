@@ -52,6 +52,10 @@ $conf = array(
             'qtfaststart' => '/opt/local/bin/qt-faststart',
             'aaccodec' => 'aac',
         ),
+        'graphics' => [
+            'extension' => "gm",
+            'executable' => "/opt/local/bin/gm",
+        ],
     ),
     // }}}
     // {{{ shirasu/depage-cms/
@@ -69,6 +73,10 @@ $conf = array(
             'qtfaststart' => '/opt/local/bin/qt-faststart',
             'aaccodec' => 'aac',
         ),
+        'graphics' => [
+            'extension' => "gm",
+            'executable' => "/opt/local/bin/gm",
+        ],
     ),
     // }}}
     // {{{ graphics
@@ -97,15 +105,21 @@ $conf = array(
                 'host' => "redis:6379",
             ),
         ),
+        'graphics' => [
+            'extension' => "gm",
+            'executable' => "/usr/bin/gm",
+            'optimize' => true,
+        ],
         'env' => 'production',
     ),
     // }}}
-    // {{{ edit.depage.net graphics
+// {{{ edit.depage.net graphics
     'edit.depage.net/**.(gif|jpg|jpeg|png|webp|pdf|eps|svg|tif|tiff).*.(gif|jpg|jpeg|png|webp)$' => array(
         'handler' => 'Depage\Graphics\Ui\Graphics',
         'env' => 'production',
         'extension' => "gm",
         'executable' => "/usr/bin/gm",
+        'optimize' => true,
         'base' => 'inherit',
         'env' => 'production',
     ),
@@ -126,15 +140,21 @@ $conf = array(
                 'host' => "redis:6379",
             ),
         ),
+        'graphics' => [
+            'extension' => "gm",
+            'executable' => "/usr/bin/gm",
+            'optimize' => true,
+        ],
         'env' => 'production',
     ),
     // }}}
-    // {{{ edit.depage.net graphics
+    // {{{ editbeta.depage.net graphics
     'editbeta.depage.net/**.(gif|jpg|jpeg|png|webp|pdf|eps|svg|tif|tiff).*.(gif|jpg|jpeg|png|webp)$' => array(
         'handler' => 'Depage\Graphics\Ui\Graphics',
         'env' => 'production',
         'extension' => "gm",
         'executable' => "/usr/bin/gm",
+        'optimize' => true,
         'base' => 'inherit',
         'env' => 'production',
     ),
