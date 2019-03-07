@@ -8,9 +8,6 @@
         padding-right: 15px;
         @include transition($transitionTime, "background-color");
     }
-    fieldset.focus {
-        background: #ffffff;
-    }
     figure.thumb {
         clear: left;
         float: left;

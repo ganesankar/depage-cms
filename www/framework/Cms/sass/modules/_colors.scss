@@ -26,6 +26,7 @@ a:hover {
 }
 body {
     background: $backgroundBody;
+    color: $textBaseColor;
 }
 #toolbarmain {
     background: $backgroundBody;
@@ -454,6 +455,10 @@ table.recent-changes {
 }
 .doc-properties {
     background: $backgroundLighterColor;
+
+    fieldset.focus {
+        background: $inputBackground;
+    }
 }
 .doc-properties {
     .depage-form .input-single.edit-type {
@@ -545,7 +550,7 @@ table.recent-changes {
     &.open p.release a,
     p.release a:hover {
         background-color: $selectionBackgroundColor;
-        color: $textBrightColor;
+        color: $selectionTextColor;
     }
     p.release a.disabled {
         background-color: transparent;
@@ -676,7 +681,7 @@ body > .dialog-full {
             border-bottom: 1px solid transparent;
 
             &.jstree-focus {
-                background: $textBrightColor;
+                background: $backgroundBody;
                 border-top-color: $selectionBackgroundColor;
                 border-bottom-color: $selectionBackgroundColor;
             }
