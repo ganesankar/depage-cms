@@ -38,7 +38,7 @@ $cornerRadius: 0.4em !global;
 $backgroundBody: rgb(55, 56, 57) !global;
 $backgroundBody: rgb(45, 46, 47) !global;
 $baseColor: darken(#ccc8c4, 45%) !global;
-$backgroundColor: darken($backgroundBody, 9%) !global;
+$backgroundColor: darken($backgroundBody, 7%) !global;
 $backgroundDarkColor: transparentize(darken($baseColor, 65%), 0.12) !global;
 $backgroundLighterColor: lighten($backgroundColor, 12%) !global;
 $backgroundBrightColor: lighten($backgroundColor, 17%) !global;

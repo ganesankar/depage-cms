@@ -24,6 +24,7 @@ a:hover {
 .error span {
     color: $errorColor;
 }
+html,
 body {
     background: $backgroundBody;
     color: $textBaseColor;
@@ -682,7 +683,7 @@ body > .dialog-full {
             border-bottom: 1px solid transparent;
 
             &.jstree-focus {
-                background: $inputBackground;
+                background: $backgroundBody;
                 border-top-color: $selectionBackgroundColor;
                 border-bottom-color: $selectionBackgroundColor;
             }
