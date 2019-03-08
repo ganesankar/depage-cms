@@ -343,7 +343,7 @@
             &:focus {
                 border-color: $backgroundLighterColor;
                 background-color: $inputBackground;
-                color: $selectionTextColor;
+                color: $textBaseColor;
             }
         }
         .error {
@@ -905,6 +905,8 @@
         .pills {
             a.button,
             a.toggle-button {
+                border-right-color: $borderColor;
+
                 &:hover {
                     background-color: $backgroundLighterColor;
                 }
@@ -1027,7 +1029,7 @@
     $inputBackground: $lightBodyBackgroundColor
 );
 
-@media (prefers-color-scheme: dark), (min-width: 1224px) {
+@media (prefers-color-scheme: dark) {
     @include colors(
         $backgroundBody: $darkBodyBackgroundColor,
         $baseColor: $darkBaseColor,
