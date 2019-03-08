@@ -1,871 +1,1059 @@
-// {{{ colors
-*::selection {
-    background: $selectionBackgroundColor;
-    color: $selectionTextColor;
-}
-*::-moz-selection {
-    background: $selectionBackgroundColor;
-    color: $selectionTextColor;
-}
-.head,
-.normal,
-h2 a {
-    color: $textBaseColor;
-}
-a,
-h2 a:hover,
-.depage-form p.cancel input,
-.select-all button {
-    color: $linkColor;
-}
-a:hover {
-    color: $linkHoverColor;
-}
-.error span {
-    color: $errorColor;
-}
-html,
-body {
-    background: $backgroundBody;
-    color: $textBaseColor;
-}
-#toolbarmain {
-    background: $backgroundBody;
-}
-.toolbar a {
-    border: 1px solid transparent;
-    color: $textBaseColor;
-
-    &:hover {
-        @include gradient(lighten($backgroundColor, 10%), lighten($backgroundColor, 2%));
-        border-top-color: lighten($backgroundColor, 12%);
-        border-bottom-color: darken($backgroundColor, 0%);
+// {{{ mixin colors
+@mixin colors(
+    $backgroundBody,
+    $baseColor,
+    $backgroundColor,
+    $backgroundDarkColor,
+    $backgroundLighterColor,
+    $backgroundBrightColor,
+    $backgroundDisabledColor,
+    $backgroundEditType,
+    $backgroundMenu,
+    $borderColor,
+    $borderLightColor,
+    $borderDarkColor,
+    $errorColor,
+    $linkColor,
+    $linkHoverColor,
+    $helpColor,
+    $textBaseColor,
+    $textLighterColor,
+    $textDisabledColor,
+    $textBrightColor,
+    $selectionBackgroundColor,
+    $selectionTextColor,
+    $insertMarkerBackground,
+    $inputBackground
+) {
+    *::selection {
+        background: $selectionBackgroundColor;
+        color: $selectionTextColor;
     }
-}
-.projectlist a:hover {
-    background: $backgroundBody;
-}
-.projectlist div.details {
-    background: $backgroundBrightColor;
-}
-.projectlist div.details a {
-    color: $textBaseColor;
-}
-.projectlist div.details a:hover {
-    color: $linkColor;
-    background: $backgroundColor;
-}
-.projectlist div.details table.lastchanged_pages .date,
-.projectlist div.details table.lastchanged_pages .lastpublish,
-.projectlist div.details table.lastchanged_pages .published a {
-    color: $textDisabledColor;
-}
-.projectlist div.details table.lastchanged_pages tr:hover a .date,
-.projectlist div.details table.lastchanged_pages tr:hover a {
-    color: $linkColor;
-}
-.centered_box small  {
-    color: $textDisabledColor;
-}
-.centered_box .icon {
-    color: $backgroundColor;
-}
-.centered_box .icon {
-    color: $textBaseColor;
-}
-.tabs {
-    background: $backgroundBody;
-
-    .tab {
-        a {
-            color: $textBaseColor;
-        }
-        &:hover {
-            background: $backgroundLighterColor;
-        }
-        &.active {
-            background: $backgroundColor;
-        }
+    *::-moz-selection {
+        background: $selectionBackgroundColor;
+        color: $selectionTextColor;
     }
-}
-.toolbar li menu,
-.vakata-context,
-.vakata-context ul {
-    background-color: $backgroundMenu;
-}
-.toolbar li menu,
-.vakata-context {
-    li {
-        color: $textBrightColor;
-
-        > a {
-            color: $textBrightColor;
-
-            &:hover {
-                background: $selectionBackgroundColor;
-            }
-        }
-    }
-}
-.vakata-context {
-    .vakata-context-separator {
-        border-top: 1px solid $borderDarkColor;
-    }
-    .vakata-contextmenu-disabled > a {
-        &,
-        &:hover {
-            color: $textLighterColor !important;
-            background-color: transparent !important;
-        }
-    }
-    .vakata-contextmenu-shortcut {
-        color: silver;
-    }
-}
-header.info {
-    border-bottom: 1px solid $borderColor;
-    background: $backgroundColor;
-
-    h1 {
+    .head,
+    .normal,
+    h2 a {
         color: $textBaseColor;
     }
-    &.info-doc-properties {
-        border-left: 1px solid $borderColor;
+    a,
+    h2 a:hover,
+    .depage-form p.cancel input,
+    .select-all button {
+        color: $linkColor;
     }
-}
-div.preview.help {
-    border: 1px solid $helpColor;
-
-    header.info {
-        background: $helpColor;
-        border-bottom-color: $helpColor;
-
-        h1 {
-            color: $textBrightColor;
-        }
-        a.close {
-            color: $textBrightColor;
-        }
+    a:hover {
+        color: $linkHoverColor;
     }
-}
-figure.thumb {
-    border: 1px solid $backgroundBrightColor;
-    background: $backgroundBody;
-
-    figcaption {
-        color: $textLighterColor;
+    .error span {
+        color: $errorColor;
     }
-    .fileinfo {
-        background: $backgroundMenu;
-        color: $textBrightColor;
+    html,
+    body {
+        background: $backgroundBody;
+        color: $textBaseColor;
     }
-}
-.file-list {
-    border-top: 1px solid transparent;
-    border-bottom: 1px solid transparent;
-    background: $backgroundBrightColor;
-
-    progress {
-        background-color: transparent;
+    #toolbarmain {
+        background: $backgroundBody;
     }
-    li {
-        figure.thumb {
-            background: transparent;
+    .toolbar {
+        a {
+            border: 1px solid transparent;
+            color: $textBaseColor;
 
             &:hover {
-                background: $backgroundBrightColor;
+                @include gradient(lighten($backgroundColor, 10%), lighten($backgroundColor, 2%));
+                border-top-color: lighten($backgroundColor, 12%);
+                border-bottom-color: darken($backgroundColor, 0%);
             }
-            &.selected {
-                border-color: $backgroundDisabledColor;
-                background: $backgroundDisabledColor;
-                @include box-shadow($lightShadow);
+        }
+        menu li.open > a {
+            background: $backgroundMenu;
+        }
+    }
+    .projectlist a:hover {
+        background: $backgroundBody;
+    }
+    .projectlist div.details {
+        background: $backgroundBrightColor;
+    }
+    .projectlist div.details a {
+        color: $textBaseColor;
+    }
+    .projectlist div.details a:hover {
+        color: $linkColor;
+        background: $backgroundColor;
+    }
+    .projectlist div.details table.lastchanged_pages .date,
+    .projectlist div.details table.lastchanged_pages .lastpublish,
+    .projectlist div.details table.lastchanged_pages .published a {
+        color: $textDisabledColor;
+    }
+    .projectlist div.details table.lastchanged_pages tr:hover a .date,
+    .projectlist div.details table.lastchanged_pages tr:hover a {
+        color: $linkColor;
+    }
+    .centered_box small  {
+        color: $textDisabledColor;
+    }
+    .centered_box .icon {
+        color: $backgroundColor;
+    }
+    .centered_box .icon {
+        color: $textBaseColor;
+    }
+    .tabs {
+        background: $backgroundBody;
 
-                figcaption {
-                    color: $selectionBackgroundColor;
+        .tab {
+            a {
+                color: $textBaseColor;
+            }
+            &:hover {
+                background: $backgroundLighterColor;
+            }
+            &.active {
+                background: $backgroundColor;
+            }
+        }
+    }
+    .toolbar li menu,
+    .vakata-context,
+    .vakata-context ul {
+        background-color: $backgroundMenu;
+    }
+    .toolbar li menu,
+    .vakata-context {
+        li {
+            color: $textBrightColor;
+
+            > a {
+                color: $textBrightColor;
+
+                &:hover {
+                    background: $selectionBackgroundColor;
                 }
             }
         }
     }
+    .vakata-context {
+        .vakata-context-separator {
+            border-top: 1px solid $borderDarkColor;
+        }
+        .vakata-contextmenu-disabled > a {
+            &,
+            &:hover {
+                color: $textLighterColor !important;
+                background-color: transparent !important;
+            }
+        }
+        .vakata-contextmenu-shortcut {
+            color: silver;
+        }
+    }
+    header.info {
+        border-bottom: 1px solid $borderColor;
+        background: $backgroundColor;
 
-    &.focus {
-        border-top: 1px solid $selectionBackgroundColor;
-        border-bottom: 1px solid $selectionBackgroundColor;
-        background: $backgroundBody;
-
-        figure.thumb.selected {
-            border-color: $selectionBackgroundColor;
-            background: $selectionBackgroundColor;
-
-            &.selected.invalid-selection {
-                border-color: $backgroundDisabledColor;
-                background: $backgroundDisabledColor;
-            }
-
-            figcaption {
-                color: $selectionTextColor;
-            }
-        }
-    }
-}
-form.lastchanged_pages {
-    p.small {
-        color: $textDisabledColor;
-    }
-}
-.sortable-forms {
-    .sortable {
-        &.new {
-            h1 {
-                color: $textBaseColor;
-            }
-        }
-        &:target,
-        &.active {
-            h1,
-            form,
-            form::before {
-                border-top: 1px solid $selectionBackgroundColor;
-                border-bottom: 1px solid $selectionBackgroundColor;
-                background-color: $backgroundLighterColor;
-            }
-            h1 {
-                border-left: 5px solid $selectionBackgroundColor;
-                background-color: $backgroundLighterColor;
-                color: $textBaseColor;
-            }
-            form::before {
-                background-color: $backgroundLighterColor;
-            }
-        }
-        &.dragged {
-            h1 {
-                background-color: $backgroundLighterColor;
-            }
-        }
-    }
-    h1,
-    form {
-        background-color: $backgroundBody;
-    }
-    h1 {
-        color: $linkColor;
-        border-top: 1px solid $borderLightColor;
-        border-bottom: 1px solid transparent;
-        border-left: 5px solid transparent;
-    }
-}
-.edit-href {
-    input.dnd-hover {
-        outline: 1px solid $selectionBackgroundColor;
-    }
-}
-.edit-href,
-.edit-src {
-    .choose-file {
-        background: $baseColor;
-        color: $textBaseColor !important;
-
-        &:hover {
-            background: $backgroundColor;
-        }
-    }
-}
-.depage-form {
-    input,
-    button,
-    select,
-    textarea,
-    .textarea,
-    .textarea-content,
-    .selectize-input {
-        &::placeholder {
-            color: $textDisabledColor;
-        }
-    }
-    p.input-richtext .textarea-content {
-        a {
-            color: $selectionBackgroundColor;
-        }
-        table {
-            td {
-                border: 1px solid $borderColor;
-            }
-        }
-    }
-    p.submit {
-        input {
-            color: $textBrightColor;
-            background: $selectionBackgroundColor;
-        }
-    }
-    p.cancel {
-        input:hover {
+        h1 {
             color: $textBaseColor;
         }
-    }
-    fieldset {
-        & + fieldset {
-            border-top: 1px solid $borderLightColor;
-        }
-        &.focus {
-            border-top: 1px solid $selectionBackgroundColor;
-            border-bottom: 1px solid $selectionBackgroundColor;
-        }
-    }
-
-    .selectize-input.dropdown-active,
-    .selectize-input.dropdown-active::before,
-    .selectize-dropdown {
-        color: $textBrightColor !important;
-        background-color: $backgroundMenu !important;
-    }
-}
-.depageEditorToolbar {
-    color: $textBrightColor;
-    background-color: $backgroundMenu;
-
-    &:after {
-        border: 5px solid transparent;
-        border-top-color: $backgroundMenu;
-    }
-}
-progress {
-    @include progress-colors($borderLightColor, $linkColor);
-}
-.task-progress {
-    strong {
-        color: $linkColor;
-    }
-    a.button {
-        &:hover {
-            background-color: $backgroundLighterColor;
-        }
-    }
-    .error {
-        strong,
-        em {
-            color: $errorColor !important;
-        }
-        @include progress-colors($borderLightColor, $errorColor);
-    }
-}
-#toolbarmain .task-progress {
-    > .task-overview {
-        progress {
-            @include progress-colors(transparent, $selectionBackgroundColor);
-        }
-    }
-    > .task-list {
-        color: $textBrightColor;
-        background-color: $backgroundDarkColor;
-    }
-    &:hover {
-        > .task-overview {
-            progress {
-                @include progress-colors($borderColor, $textBrightColor);
-            }
-        }
-    }
-}
-html {
-    &.layout-split {
-        .layout-right {
+        &.info-doc-properties {
             border-left: 1px solid $borderColor;
         }
     }
-}
-.box {
-    .content {
-        border-bottom: 1px solid $borderLightColor;
+    div.preview.help {
+        border: 1px solid $helpColor;
+
+        header.info {
+            background: $helpColor;
+            border-bottom-color: $helpColor;
+
+            h1 {
+                color: $textBrightColor;
+            }
+            a.close {
+                color: $textBrightColor;
+            }
+        }
     }
-    a.new {
-        color: $textBaseColor;
+    figure.thumb {
+        border: 1px solid $backgroundBrightColor;
+        background: $backgroundBody;
+
+        figcaption {
+            color: $textLighterColor;
+        }
+        .fileinfo {
+            background: $backgroundMenu;
+            color: $textBrightColor;
+        }
     }
-}
-.box-tasks {
-    .task-progress {
-        em {
+    .file-list {
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+        background: $backgroundBrightColor;
+
+        progress {
+            background-color: transparent;
+        }
+        li {
+            figure.thumb {
+                background: transparent;
+
+                &:hover {
+                    background: $backgroundBrightColor;
+                }
+                &.selected {
+                    border-color: $backgroundDisabledColor;
+                    background: $backgroundDisabledColor;
+                    @include box-shadow($lightShadow);
+
+                    figcaption {
+                        color: $selectionBackgroundColor;
+                    }
+                }
+            }
+        }
+
+        &.focus {
+            border-top: 1px solid $selectionBackgroundColor;
+            border-bottom: 1px solid $selectionBackgroundColor;
+            background: $backgroundBody;
+
+            figure.thumb.selected {
+                border-color: $selectionBackgroundColor;
+                background: $selectionBackgroundColor;
+
+                &.selected.invalid-selection {
+                    border-color: $backgroundDisabledColor;
+                    background: $backgroundDisabledColor;
+                }
+
+                figcaption {
+                    color: $selectionTextColor;
+                }
+            }
+        }
+    }
+    form.lastchanged_pages {
+        p.small {
             color: $textDisabledColor;
         }
     }
-}
-.box-welcome,
-.box-login {
-    .content {
+    .sortable-forms {
+        .sortable {
+            &.new {
+                h1 {
+                    color: $textBaseColor;
+                }
+            }
+            &:target,
+            &.active {
+                h1,
+                form,
+                form::before {
+                    border-top: 1px solid $selectionBackgroundColor;
+                    border-bottom: 1px solid $selectionBackgroundColor;
+                    background-color: $backgroundLighterColor;
+                }
+                h1 {
+                    border-left: 5px solid $selectionBackgroundColor;
+                    background-color: $backgroundLighterColor;
+                    color: $textBaseColor;
+                }
+                form::before {
+                    background-color: $backgroundLighterColor;
+                }
+            }
+            &.dragged {
+                h1 {
+                    background-color: $backgroundLighterColor;
+                }
+            }
+        }
+        h1,
         form {
-            background: $backgroundLighterColor;
-            border-top: 1px solid $selectionBackgroundColor;
-            border-bottom: 1px solid $selectionBackgroundColor;
-            @include box-shadow($lightShadow);
+            background-color: $backgroundBody;
+        }
+        h1 {
+            color: $linkColor;
+            border-top: 1px solid $borderLightColor;
+            border-bottom: 1px solid transparent;
+            border-left: 5px solid transparent;
+        }
+    }
+    .edit-href {
+        input.dnd-hover {
+            outline: 1px solid $selectionBackgroundColor;
+        }
+    }
+    .edit-href,
+    .edit-src {
+        .choose-file {
+            background: $baseColor;
+            color: $textBaseColor !important;
 
-            p.submit input {
+            &:hover {
+                background: $backgroundColor;
+            }
+        }
+    }
+    .depage-form {
+        input,
+        button,
+        select,
+        textarea,
+        .textarea,
+        .textarea-content,
+        .selectize-input {
+            color: $textBaseColor;
+
+            &::placeholder {
+                color: $textDisabledColor;
+            }
+        }
+        input,
+        button,
+        select,
+        textarea,
+        .textarea {
+            border-color: $backgroundLighterColor;
+            background-color: $inputBackground;
+
+            ::-moz-selection,
+            &::-moz-selection {
+                color: $selectionTextColor;
+                background: $selectionBackgroundColor;
+            }
+            ::selection,
+            &::selection {
+                color: $selectionTextColor;
+                background: $selectionBackgroundColor;
+            }
+            &:hover {
+                border-color: $selectionBackgroundColor;
+            }
+            &:disabled:hover {
+                border-color: $backgroundLighterColor;
+            }
+            &.focus,
+            &:focus {
+                border-color: $backgroundLighterColor;
+                background-color: $inputBackground;
+                color: $selectionTextColor;
+            }
+        }
+        .error {
+            input,
+            button,
+            select,
+            textarea,
+            .textarea {
+                border-color: $errorColor;
+            }
+        }
+        .error .depage-label {
+            color: $errorColor;
+        }
+        .selectize-dropdown-header {
+            border-bottom-color: $backgroundLighterColor;
+        }
+        .selectize-input,
+        .selectize-control.single .selectize-input.input-active {
+            background: $inputBackground;
+        }
+        .selectize-input.full {
+            background-color: $inputBackground;
+        }
+        .selectize-dropdown,
+        .selectize-input,
+        .selectize-input input {
+            color: $textBaseColor;
+        }
+        .selectize-input {
+            border-color: $backgroundLighterColor;
+        }
+        .selectize-input.focus {
+            border-color: $selectionBackgroundColor;
+        }
+        .error .selectize-input {
+            border-color: $errorColor;
+        }
+        .selectize-control.multi .selectize-input > div {
+            background: darken($inputBackground, 10%);
+            color: $textBaseColor;
+        }
+        .selectize-control.multi .selectize-input > div.active {
+            color: $selectionTextColor;
+            background: $selectionBackgroundColor;
+        }
+        .selectize-dropdown {
+            border-color: $selectionBackgroundColor;
+        }
+        .selectize-dropdown .active {
+            color: $selectionTextColor;
+            background: $selectionBackgroundColor;
+        }
+
+        p.input-richtext .textarea-content {
+            a {
+                color: $selectionBackgroundColor;
+            }
+            table {
+                td {
+                    border: 1px solid $borderColor;
+                }
+            }
+        }
+        p.submit {
+            input {
                 color: $textBrightColor;
                 background: $selectionBackgroundColor;
             }
         }
-    }
-}
-.projectlist {
-    h2 {
-        color: $textLighterColor;
-    }
-    a.button {
-        color: $textLighterColor;
+        p.cancel {
+            input:hover {
+                color: $textBaseColor;
+            }
+        }
+        fieldset {
+            & + fieldset {
+                border-top: 1px solid $borderLightColor;
+            }
+            &.focus {
+                border-top: 1px solid $selectionBackgroundColor;
+                border-bottom: 1px solid $selectionBackgroundColor;
+            }
+        }
 
-        &:hover {
-            background: $selectionBackgroundColor;
-            color: $selectionTextColor;
+        .selectize-input.dropdown-active,
+        .selectize-input.dropdown-active::before,
+        .selectize-dropdown {
+            color: $textBrightColor !important;
+            background-color: $backgroundMenu !important;
         }
     }
-}
-.projectlist dd {
-    background: $backgroundBrightColor;
-}
-table.recent-changes {
-    td.url {
-        a {
-            color: $textBaseColor;
-        }
-    }
-    td.lastchange,
-    td.date,
-    td.released,
-    td.published {
-        &,
-        a {
-            color: $textDisabledColor;
-        }
-    }
-}
-.tasks {
-    dt {
-        color: $errorColor;
-    }
-    dd {
-        color: $textDisabledColor;
+    .depageEditorToolbar {
+        color: $textBrightColor;
+        background-color: $backgroundMenu;
 
+        &:after {
+            border: 5px solid transparent;
+            border-top-color: $backgroundMenu;
+        }
+    }
+    progress {
+        @include progress-colors($borderLightColor, $linkColor);
+    }
+    .task-progress {
         strong {
-            color: $textBaseColor;
+            color: $linkColor;
         }
-        &.failed {
-            p,
-            strong {
-                color: $errorColor;
-            }
-        }
-    }
-}
-.doc-properties {
-    background: $backgroundLighterColor;
-
-    fieldset.focus {
-        background: $inputBackground;
-    }
-}
-.doc-properties {
-    .depage-form .input-single.edit-type {
-        > span.depage-label + span {
-            background: $backgroundColor;
-        }
-        input[type="radio"] + span {
-            color: $textBaseColor;
-        }
-        input[type="radio"]:checked + span {
-            background: $backgroundEditType;
-            color: $textBrightColor;
-            @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
-        }
-        input[type="radio"]:disabled + span {
-        }
-        input[type="radio"]:focus + span {
-            @include box-shadow(inset 0 0 0 1px $selectionBackgroundColor);
-        }
-        input[type="radio"]:checked:focus + span {
-            @include box-shadow(inset 0 0 4px 1px $selectionBackgroundColor);
-        }
-    }
-}
-.doc-properties {
-    .depage-form .input-multiple.skin-checkbox {
-        input[type="checkbox"] + span {
-            color: $textBaseColor;
-
-            &:hover {
-                background: $backgroundColor;
-                @include box-shadow(inset 0 0 3px 0 rgba(0, 0, 0, 0.5));
-
-            }
-        }
-        input[type="checkbox"]:checked + span {
-            background: $backgroundEditType;
-            color: $textBrightColor;
-            @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
-        }
-        input[type="checkbox"]:focus + span {
-            @include box-shadow(inset 0 0 0 1px $selectionBackgroundColor);
-        }
-        input[type="checkbox"]:checked:focus + span {
-            @include box-shadow(inset 0 0 4px 1px $selectionBackgroundColor);
-        }
-    }
-}
-.doc-properties .doc-property-fieldset {
-    > p {
-        input,
-        textarea,
-        .textarea {
-            border-color: transparent !important;
-            border-bottom-color: $backgroundLighterColor !important;
-        }
-        &:last-of-type  {
-            input,
-            textarea,
-            .textarea {
-                border-bottom-color: transparent !important;
-            }
-        }
-    }
-    label:focus-within .depage-label {
-        color: $textBaseColor;
-    }
-    > p > .depage-label,
-    > p > label > .depage-label {
-        color: $textLighterColor;
-    }
-}
-.doc-properties .doc-property-meta {
-    background-color: $backgroundColor;
-
-    p.status {
-        a {
-            color: $textBaseColor;
-        }
-    }
-    p.date {
-        color: $textLighterColor;
-    }
-    p.release {
-        a {
-            color: $selectionBackgroundColor;
-        }
-    }
-    &.open p.release a,
-    p.release a:hover {
-        background-color: $selectionBackgroundColor;
-        color: $selectionTextColor;
-    }
-    p.release a.disabled {
-        background-color: transparent;
-        color: $textDisabledColor;
-    }
-}
-.colorschemes {
-    .colorprops {
-        border-left: 1px solid $borderColor;
-        background: $backgroundLighterColor;
-    }
-}
-#depageGrowlArea {
-    div.depage-growl-message {
-        background-color: $backgroundDarkColor;
-        background-color: $selectionBackgroundColor;
-        color: $textBrightColor;
-
-        @include box-shadow(0 3px 0.4em 0 rgba(0, 0, 0, 0.5));
-
-        &:hover {
-            border-color: $insertMarkerBackground;
-            background-color: $selectionBackgroundColor;
-        }
-    }
-}
-body > .dialog-full {
-    background: rgba(0, 0, 0, 0.3);
-
-    > .content {
-        background: $backgroundColor;
-        border: 1px solid $borderColor;
-        @include box-shadow($darkShadow);
-    }
-    .dialog-bar {
-        border-top: 1px solid $borderColor;
-
-        .button {
-            background: $backgroundLighterColor;
-
-            &:hover {
-                background: $backgroundBrightColor;
-            }
-            &.default {
-                background: $selectionBackgroundColor;
-                color: $selectionTextColor;
-            }
-            &.default.disabled {
-                background: $backgroundDisabledColor;
-            }
-        }
-    }
-}
-.jstree-anchor {
-    color: $textBaseColor;
-
-    > span.hint {
-        color: $textDisabledColor;
-
-        > span.mini-thumb {
-            background-color: $backgroundBody;
-        }
-    }
-}
-.jstree-node {
-    > .jstree-anchor::after {
-        background: $insertMarkerBackground;
-    }
-    > .jstree-node-actions {
-        &::after {
-            color: $selectionTextColor;
-            background-color: $insertMarkerBackground;
-        }
-    }
-    &.insert-into,
-    &.insert-before,
-    &.insert-after {
-        & > .jstree-anchor {
-            background: transparent;
-            color: $textBaseColor !important;
-        }
-    }
-}
-.jstree-root-add-button {
-    &::before {
-        color: $selectionTextColor;
-        background-color: $backgroundColor;
-    }
-    &:hover::before {
-        background-color: $insertMarkerBackground;
-    }
-}
-.jstree-hovered {
-    background: $backgroundColor;
-}
-.jstree-context {
-    background: $backgroundColor;
-}
-.jstree-focus {
-    .jstree-clicked,
-    .jstree-clicked.jstree-hovered {
-        background: $selectionBackgroundColor;
-        color: $selectionTextColor !important;
-    }
-}
-.jstree-disabled,
-.jstree-disabled.jstree-hovered,
-.jstree-disabled.jstree-clicked {
-    background: $backgroundDisabledColor;
-}
-.jstree-search {
-    color: $errorColor;
-}
-.jstree-node > .jstree-anchor > input.jstree-rename-input {
-    background: $selectionBackgroundColor;
-    border: 1px solid $selectionBackgroundColor !important;
-}
-.trees {
-    background: $backgroundBody;
-    border-right: 1px solid $borderColor;
-
-    .tree {
-        background: $backgroundLighterColor;
-
-        .jstree-container {
-            background: $backgroundBrightColor;
-            border-top: 1px solid transparent;
-            border-bottom: 1px solid transparent;
-
-            &.jstree-focus {
-                background: $backgroundBody;
-                border-top-color: $selectionBackgroundColor;
-                border-bottom-color: $selectionBackgroundColor;
-            }
-        }
-    }
-    .tree.pages {
-        border-bottom: 1px solid $borderColor;
-    }
-}
-.depage-tooltip,
-.depage-shy-dialogue {
-    $borderWidth: 15px * 0.5;
-
-    .wrapper {
-        background: $backgroundMenu;
-    }
-    .direction-marker {
-        &.left {
-            border-right: $borderWidth solid $backgroundMenu;
-        }
-        &.right {
-            border-left: $borderWidth solid $backgroundMenu;
-        }
-        &.top {
-            border-bottom: $borderWidth solid $backgroundMenu;
-        }
-        &.bottom {
-            border-top: $borderWidth solid $backgroundMenu;
-        }
-    }
-    h1,
-    p,
-    a {
-        color: $textBrightColor;
-    }
-    a.button {
-        &:focus,
-        &:hover {
-            background-color: lighten($backgroundMenu, 30%);
-        }
-        &:focus {
-            border-color: $selectionBackgroundColor;
-        }
-        &.default {
-            padding: 6px 12px;
-            background: $selectionBackgroundColor;
-            color: $textBrightColor;
-
-            &:focus,
-            &:hover {
-                background: lighten($selectionBackgroundColor, 5%);
-            }
-        }
-    }
-}
-.tabs {
-    & ~ hr {
-        border: none;
-        border-top: 1px solid $borderLightColor;
-    }
-}
-#toolbarmain {
-    border-bottom: 1px solid $borderColor;
-
-    menu.left a.home {
-        color: $textBaseColor;
-    }
-    a.open,
-    menu li.open > a {
-        &,
-        &:hover {
-            color: $textBrightColor;
-        }
-    }
-}
-.toolbar {
-    a.disabled,
-    a.disabled:hover {
-        background-color: $backgroundBody;
-        color: #aaa;
-    }
-    select {
-        background-color: $backgroundBody;
-        border: none;
-
-        &:hover {
-            background-color: $backgroundMenu;
-        }
-    }
-    .pills {
-        a.button,
-        a.toggle-button {
+        a.button {
             &:hover {
                 background-color: $backgroundLighterColor;
             }
         }
-        a.toggle-button.active {
-            color: $backgroundLighterColor;
+        .error {
+            strong,
+            em {
+                color: $errorColor !important;
+            }
+            @include progress-colors($borderLightColor, $errorColor);
         }
     }
-}
-.sp-input {
-    border: 1px solid $borderLightColor;
-    color: #222;
-}
-.sp-input:focus  {
-    background: $backgroundBody;
-    border: 1px solid $borderColor;
-}
-.sp-replacer {
-    background: $backgroundBody;
-    color: #333;
-}
-.sp-replacer:hover, .sp-replacer.sp-active {
-    color: #111;
-}
-body > .sp-container {
-    .sp-input {
-        background: $backgroundBody;
-        color: $textBaseColor;
-        border: none;
+    #toolbarmain .task-progress {
+        > .task-overview {
+            progress {
+                @include progress-colors(transparent, $selectionBackgroundColor);
+            }
+        }
+        > .task-list {
+            color: $textBrightColor;
+            background-color: $backgroundDarkColor;
+        }
+        &:hover {
+            > .task-overview {
+                progress {
+                    @include progress-colors($borderColor, $textBrightColor);
+                }
+            }
+        }
     }
-}
-.sp-container button {
-    background-color: #eeeeee;
-    background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
-    background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
-    background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
-    background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
-    background-image: linear-gradient(to bottom, #eeeeee, #cccccc);
-    border: 1px solid #ccc;
-    border-bottom: 1px solid #bbb;
-    color: #333;
-}
-.sp-container button:hover {
-    background-color: #dddddd;
-    background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
-    background-image: linear-gradient(to bottom, #dddddd, #bbbbbb);
-    border: 1px solid #bbb;
-    border-bottom: 1px solid #999;
-    text-shadow: 0 1px 0 #ddd;
-}
-.sp-container button:active {
-    border: 1px solid #aaa;
-    border-bottom: 1px solid #888;
-    -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
-}
-.sp-cancel {
-    color: #d93f3f !important;
-}
-.sp-cancel:hover {
-    color: #d93f3f !important;
-}
-.sp-palette .sp-thumb-light.sp-thumb-active .sp-thumb-inner {
-    &:after {
-        content: " ";
-        background-color: #000000;
+    html {
+        &.layout-split {
+            .layout-right {
+                border-left: 1px solid $borderColor;
+            }
+        }
     }
-}
-.sp-palette .sp-thumb-dark.sp-thumb-active .sp-thumb-inner {
-    &:after {
-        content: " ";
-        background-color: #ffffff;
+    .box {
+        .content {
+            border-bottom: 1px solid $borderLightColor;
+        }
+        a.new {
+            color: $textBaseColor;
+        }
     }
-}
-.content .depage-live-filter,
-.library .depage-live-filter {
-    input {
-        border: 1px solid $backgroundLighterColor;
+    .box-tasks {
+        .task-progress {
+            em {
+                color: $textDisabledColor;
+            }
+        }
+    }
+    .box-welcome,
+    .box-login {
+        .content {
+            form {
+                background: $backgroundLighterColor;
+                border-top: 1px solid $selectionBackgroundColor;
+                border-bottom: 1px solid $selectionBackgroundColor;
+                @include box-shadow($lightShadow);
 
-        &:focus {
-            border-color: $selectionBackgroundColor;
+                p.submit input {
+                    color: $textBrightColor;
+                    background: $selectionBackgroundColor;
+                }
+            }
+        }
+    }
+    .projectlist {
+        h2 {
+            color: $textLighterColor;
+        }
+        a.button {
+            color: $textLighterColor;
+
+            &:hover {
+                background: $selectionBackgroundColor;
+                color: $selectionTextColor;
+            }
+        }
+    }
+    .projectlist dd {
+        background: $backgroundBrightColor;
+    }
+    table.recent-changes {
+        td.url {
+            a {
+                color: $textBaseColor;
+            }
+        }
+        td.lastchange,
+        td.date,
+        td.released,
+        td.published {
+            &,
+            a {
+                color: $textDisabledColor;
+            }
+        }
+    }
+    .tasks {
+        dt {
+            color: $errorColor;
+        }
+        dd {
+            color: $textDisabledColor;
+
+            strong {
+                color: $textBaseColor;
+            }
+            &.failed {
+                p,
+                strong {
+                    color: $errorColor;
+                }
+            }
+        }
+    }
+    .doc-properties {
+        background: $backgroundLighterColor;
+
+        fieldset.focus {
+            background: $inputBackground;
+        }
+    }
+    .doc-properties {
+        .depage-form .input-single.edit-type {
+            > span.depage-label + span {
+                background: $backgroundColor;
+            }
+            input[type="radio"] + span {
+                color: $textBaseColor;
+            }
+            input[type="radio"]:checked + span {
+                background: $backgroundEditType;
+                color: $textBrightColor;
+                @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
+            }
+            input[type="radio"]:disabled + span {
+            }
+            input[type="radio"]:focus + span {
+                @include box-shadow(inset 0 0 0 1px $selectionBackgroundColor);
+            }
+            input[type="radio"]:checked:focus + span {
+                @include box-shadow(inset 0 0 4px 1px $selectionBackgroundColor);
+            }
+        }
+    }
+    .doc-properties {
+        .depage-form .input-multiple.skin-checkbox {
+            input[type="checkbox"] + span {
+                color: $textBaseColor;
+
+                &:hover {
+                    background: $backgroundColor;
+                    @include box-shadow(inset 0 0 3px 0 rgba(0, 0, 0, 0.5));
+
+                }
+            }
+            input[type="checkbox"]:checked + span {
+                background: $backgroundEditType;
+                color: $textBrightColor;
+                @include box-shadow(inset 0 0 4px 0 rgba(0, 0, 0, 0.7));
+            }
+            input[type="checkbox"]:focus + span {
+                @include box-shadow(inset 0 0 0 1px $selectionBackgroundColor);
+            }
+            input[type="checkbox"]:checked:focus + span {
+                @include box-shadow(inset 0 0 4px 1px $selectionBackgroundColor);
+            }
+        }
+    }
+    .doc-properties .doc-property-fieldset {
+        > p {
+            input,
+            textarea,
+            .textarea {
+                border-color: transparent !important;
+                border-bottom-color: $backgroundLighterColor !important;
+            }
+            &:last-of-type  {
+                input,
+                textarea,
+                .textarea {
+                    border-bottom-color: transparent !important;
+                }
+            }
+        }
+        label:focus-within .depage-label {
+            color: $textBaseColor;
+        }
+        > p > .depage-label,
+        > p > label > .depage-label {
+            color: $textLighterColor;
+        }
+    }
+    .doc-properties .doc-property-meta {
+        background-color: $backgroundColor;
+
+        p.status {
+            a {
+                color: $textBaseColor;
+            }
+        }
+        p.date {
+            color: $textLighterColor;
+        }
+        p.release {
+            a {
+                color: $selectionBackgroundColor;
+            }
+        }
+        &.open p.release a,
+        p.release a:hover {
+            background-color: $selectionBackgroundColor;
+            color: $selectionTextColor;
+        }
+        p.release a.disabled {
+            background-color: transparent;
+            color: $textDisabledColor;
+        }
+    }
+    .colorschemes {
+        .colorprops {
+            border-left: 1px solid $borderColor;
+            background: $backgroundLighterColor;
+        }
+    }
+    #depageGrowlArea {
+        div.depage-growl-message {
+            background-color: $backgroundDarkColor;
+            background-color: $selectionBackgroundColor;
+            color: $textBrightColor;
+
+            @include box-shadow(0 3px 0.4em 0 rgba(0, 0, 0, 0.5));
+
+            &:hover {
+                border-color: $insertMarkerBackground;
+                background-color: $selectionBackgroundColor;
+            }
+        }
+    }
+    body > .dialog-full {
+        background: rgba(0, 0, 0, 0.3);
+
+        > .content {
+            background: $backgroundColor;
+            border: 1px solid $borderColor;
+            @include box-shadow($darkShadow);
+        }
+        .dialog-bar {
+            border-top: 1px solid $borderColor;
+
+            .button {
+                background: $backgroundLighterColor;
+
+                &:hover {
+                    background: $backgroundBrightColor;
+                }
+                &.default {
+                    background: $selectionBackgroundColor;
+                    color: $selectionTextColor;
+                }
+                &.default.disabled {
+                    background: $backgroundDisabledColor;
+                }
+            }
+        }
+    }
+    .jstree-anchor {
+        color: $textBaseColor;
+
+        > span.hint {
+            color: $textDisabledColor;
+
+            > span.mini-thumb {
+                background-color: $backgroundBody;
+            }
+        }
+    }
+    .jstree-node {
+        > .jstree-anchor::after {
+            background: $insertMarkerBackground;
+        }
+        > .jstree-node-actions {
+            &::after {
+                color: $selectionTextColor;
+                background-color: $insertMarkerBackground;
+            }
+        }
+        &.insert-into,
+        &.insert-before,
+        &.insert-after {
+            & > .jstree-anchor {
+                background: transparent;
+                color: $textBaseColor !important;
+            }
+        }
+    }
+    .jstree-root-add-button {
+        &::before {
+            color: $selectionTextColor;
+            background-color: $backgroundColor;
+        }
+        &:hover::before {
+            background-color: $insertMarkerBackground;
+        }
+    }
+    .jstree-hovered {
+        background: $backgroundColor;
+    }
+    .jstree-context {
+        background: $backgroundColor;
+    }
+    .jstree-clicked,
+    .jstree-clicked.jstree-hovered {
+        background: $backgroundColor;
+        color: $textBaseColor !important;
+    }
+    .jstree-focus {
+        .jstree-clicked,
+        .jstree-clicked.jstree-hovered {
+            background: $selectionBackgroundColor;
+            color: $selectionTextColor !important;
+        }
+    }
+    .jstree-disabled,
+    .jstree-disabled.jstree-hovered,
+    .jstree-disabled.jstree-clicked {
+        background: $backgroundDisabledColor;
+    }
+    .jstree-search {
+        color: $errorColor;
+    }
+    .jstree-node > .jstree-anchor > input.jstree-rename-input {
+        background: $selectionBackgroundColor;
+        border: 1px solid $selectionBackgroundColor !important;
+    }
+    #jstree-marker {
+        border-top: 1px solid $insertMarkerBackground;
+        border-bottom: 1px solid $insertMarkerBackground;
+
+        &:before {
+            border-left: 5px solid $insertMarkerBackground;
+        }
+    }
+    .trees {
+        background: $backgroundBody;
+        border-right: 1px solid $borderColor;
+
+        .tree {
+            background: $backgroundLighterColor;
+
+            .jstree-container {
+                background: $backgroundBrightColor;
+                border-top: 1px solid transparent;
+                border-bottom: 1px solid transparent;
+
+                &.jstree-focus {
+                    background: $backgroundBody;
+                    border-top-color: $selectionBackgroundColor;
+                    border-bottom-color: $selectionBackgroundColor;
+                }
+            }
+        }
+        .tree.pages {
+            border-bottom: 1px solid $borderColor;
+        }
+    }
+    .depage-tooltip,
+    .depage-shy-dialogue {
+        $borderWidth: 15px * 0.5;
+
+        .wrapper {
+            background: $backgroundMenu;
+        }
+        .direction-marker {
+            &.left {
+                border-right: $borderWidth solid $backgroundMenu;
+            }
+            &.right {
+                border-left: $borderWidth solid $backgroundMenu;
+            }
+            &.top {
+                border-bottom: $borderWidth solid $backgroundMenu;
+            }
+            &.bottom {
+                border-top: $borderWidth solid $backgroundMenu;
+            }
+        }
+        h1,
+        p,
+        a {
+            color: $textBrightColor;
+        }
+        a.button {
+            &:focus,
+            &:hover {
+                background-color: lighten($backgroundMenu, 30%);
+            }
+            &:focus {
+                border-color: $selectionBackgroundColor;
+            }
+            &.default {
+                padding: 6px 12px;
+                background: $selectionBackgroundColor;
+                color: $textBrightColor;
+
+                &:focus,
+                &:hover {
+                    background: lighten($selectionBackgroundColor, 5%);
+                }
+            }
+        }
+    }
+    .tabs {
+        & ~ hr {
+            border: none;
+            border-top: 1px solid $borderLightColor;
+        }
+    }
+    #toolbarmain {
+        border-bottom: 1px solid $borderColor;
+
+        menu.left a.home {
+            color: $textBaseColor;
+        }
+        a.open,
+        menu li.open > a {
+            &,
+            &:hover {
+                color: $textBrightColor;
+            }
+        }
+    }
+    .toolbar {
+        a.disabled,
+        a.disabled:hover {
+            background-color: $backgroundBody;
+            color: #aaa;
+        }
+        select {
+            background-color: $backgroundBody;
+            border: none;
+
+            &:hover {
+                background-color: $backgroundMenu;
+            }
+        }
+        .pills {
+            a.button,
+            a.toggle-button {
+                &:hover {
+                    background-color: $backgroundLighterColor;
+                }
+            }
+            a.toggle-button.active {
+                color: $backgroundLighterColor;
+            }
+        }
+    }
+    .sp-input {
+        border: 1px solid $borderLightColor;
+        color: #222;
+    }
+    .sp-input:focus  {
+        background: $backgroundBody;
+        border: 1px solid $borderColor;
+    }
+    .sp-replacer {
+        background: $backgroundBody;
+        color: #333;
+    }
+    .sp-replacer:hover, .sp-replacer.sp-active {
+        color: #111;
+    }
+    body > .sp-container {
+        background: $backgroundMenu;
+
+        .sp-input {
+            background: $backgroundBody;
+            color: $textBaseColor;
+            border: none;
+        }
+    }
+    .sp-container button {
+        background-color: #eeeeee;
+        background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
+        background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
+        background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
+        background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+        background-image: linear-gradient(to bottom, #eeeeee, #cccccc);
+        border: 1px solid #ccc;
+        border-bottom: 1px solid #bbb;
+        color: #333;
+    }
+    .sp-container button:hover {
+        background-color: #dddddd;
+        background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
+        background-image: -moz-linear-gradient(top, #dddddd, #bbbbbb);
+        background-image: -ms-linear-gradient(top, #dddddd, #bbbbbb);
+        background-image: -o-linear-gradient(top, #dddddd, #bbbbbb);
+        background-image: linear-gradient(to bottom, #dddddd, #bbbbbb);
+        border: 1px solid #bbb;
+        border-bottom: 1px solid #999;
+        text-shadow: 0 1px 0 #ddd;
+    }
+    .sp-container button:active {
+        border: 1px solid #aaa;
+        border-bottom: 1px solid #888;
+        -webkit-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+        -moz-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+        -ms-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+        -o-box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+        box-shadow: inset 0 0 5px 2px #aaaaaa, 0 1px 0 0 #eeeeee;
+    }
+    .sp-cancel {
+        color: #d93f3f !important;
+    }
+    .sp-cancel:hover {
+        color: #d93f3f !important;
+    }
+    .sp-palette .sp-thumb-light.sp-thumb-active .sp-thumb-inner {
+        &:after {
+            content: " ";
+            background-color: #000000;
+        }
+    }
+    .sp-palette .sp-thumb-dark.sp-thumb-active .sp-thumb-inner {
+        &:after {
+            content: " ";
+            background-color: #ffffff;
+        }
+    }
+    .content .depage-live-filter,
+    .library .depage-live-filter {
+        input {
+            border: 1px solid $backgroundLighterColor;
+
+            &:focus {
+                border-color: $selectionBackgroundColor;
+            }
         }
     }
 }
 // }}}
+
+@include colors(
+    $backgroundBody: $lightBodyBackgroundColor,
+    $baseColor: $lightBaseColor,
+    $backgroundColor: lighten($lightBaseColor, 5%),
+    $backgroundDarkColor: $lightOppositeBackgroundColor,
+    $backgroundLighterColor: lighten($lightBackgroundColor, 10%),
+    $backgroundBrightColor: lighten($lightBackgroundColor, 12%),
+    $backgroundDisabledColor: #cccccc,
+    $backgroundEditType: darken($lightBackgroundColor, 35%),
+    $backgroundMenu: $lightOppositeBackgroundColor,
+    $borderColor: $lightBorderColor,
+    $borderLightColor: lighten($lightBorderColor, 10%),
+    $borderDarkColor: darken($lightBorderColor, 25%),
+    $errorColor: #882200,
+    $linkColor: darken(#047CBF, 7%),
+    $linkHoverColor: #047CBF,
+    $helpColor: #047CBF,
+    $textBaseColor: #000000,
+    $textLighterColor: #555555,
+    $textDisabledColor: #999999,
+    $textBrightColor: #ffffff,
+    $selectionBackgroundColor: $lightSelectionBackgroundColor,
+    $selectionTextColor: #ffffff,
+    $insertMarkerBackground: lighten($lightSelectionBackgroundColor, 10%),
+    $inputBackground: $lightBodyBackgroundColor
+);
+
+@media (prefers-color-scheme: dark), (min-width: 1224px) {
+    @include colors(
+        $backgroundBody: $darkBodyBackgroundColor,
+        $baseColor: $darkBaseColor,
+        $backgroundColor: $darkBackgroundColor,
+        $backgroundDarkColor: transparentize(darken($darkBaseColor, 65%), 0.12),
+        $backgroundLighterColor: lighten($darkBackgroundColor, 12%),
+        $backgroundBrightColor: lighten($darkBackgroundColor, 17%),
+        $backgroundDisabledColor: #cccccc,
+        $backgroundEditType: lighten($darkBackgroundColor, 32%),
+        $backgroundMenu: $lightBaseColor,
+        $borderColor: $darkBorderColor,
+        $borderLightColor: lighten($darkBorderColor, 5%),
+        $borderDarkColor: darken($darkBorderColor, 25%),
+        $errorColor: #CC3300,
+        $linkColor: lighten(#047CBF, 5%),
+        $linkHoverColor: lighten(#047CBF, 10%),
+        $helpColor: #047CBF,
+        $textBaseColor: #dddddd,
+        $textLighterColor: #aaaaaa,
+        $textDisabledColor: #888888,
+        $textBrightColor: #000000,
+        $selectionBackgroundColor: #047CBF,
+        $selectionTextColor: #ffffff,
+        $insertMarkerBackground: lighten($darkSelectionBackgroundColor, 10%),
+        $inputBackground: lighten($darkBackgroundColor, 30%)
+    );
+}
 
 // vim:set ft=scss sw=4 sts=4 fdm=marker :

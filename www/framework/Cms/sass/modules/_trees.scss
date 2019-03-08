@@ -115,8 +115,6 @@
     height: 0;
     font-size: 0;
     line-height: 0;
-    border-top: 1px solid $insertMarkerBackground;
-    border-bottom: 1px solid $insertMarkerBackground;
     z-index: 12000 !important;
 
     &:before {
@@ -128,7 +126,6 @@
         border-right: 0;
         border-top: 5px solid transparent;
         border-bottom: 5px solid transparent;
-        border-left: 5px solid $insertMarkerBackground;
     }
 }
 // }}}
@@ -284,11 +281,6 @@
 .jstree-anchor,
 .jstree-animated {
     transition: background-color 0.15s, box-shadow 0.15s;
-}
-.jstree-clicked,
-.jstree-clicked.jstree-hovered {
-    background: $backgroundColor;
-    color: $textBaseColor !important;
 }
 .jstree-no-icons .jstree-anchor > .jstree-themeicon {
     display: none;

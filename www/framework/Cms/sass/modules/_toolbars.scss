@@ -311,7 +311,6 @@
             @include radius(0, "bottom", "left");
             @include radius(0, "bottom", "right");
             border-color: transparent !important;
-            background: $backgroundMenu;
         }
     }
     menu li.open {
